@@ -1,0 +1,661 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sample: Spider-Man</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4bf2d809-17aa-49d4-8367-6ba1d003ca34" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="icons8-wikipedia-logo-280.png"/></div><h1 class="page-title">Sample: Spider-Man</h1></header><div class="page-body"><hr id="d8378e92-2ad8-4987-ae98-8b4db851a706"/><div id="f9b5108a-7283-4ad0-bf3f-d0211f44d1f6" class="column-list"><div id="1e1b5075-1cd4-4239-8022-ff10435832e1" style="width:75%" class="column"><p id="2b1f9b94-83fc-43e2-afc1-c01a8c7e0348" class="">&quot;Hope you were watching, Uncle Ben. &#x27;Cause I did that for you. Kept everyone safe. Kept them from being scared. And I made it fun. It doesn&#x27;t matter that most of &#x27;em wouldn&#x27;t have lifted a finger for Peter Parker. That&#x27;s not why you do it. You do it &#x27;cause it&#x27;s the right thing to do. Because it&#x27;s what you would&#x27;ve done. You were more than a father to me, Ben Parker. More than a role model...You were my hero. Now it&#x27;s my turn. Because from now on, I&#x27;m going to be yours! You&#x27;ll see. I&#x27;m going to give it my all! We&#x27;ll have fun! I&#x27;ll never quit--and it&#x27;s going to be amazing!&quot;</p><p id="4c03b87b-5528-425a-937d-e99c2d6259f6" class="">—Spider-Man (Peter Parker)</p><p id="04632a66-3c29-43b9-8eeb-83bf4910fbac" class="">
+</p><p id="3fd89e54-db36-4428-9e7b-87c5a84eeaaa" class="">Spider-Man is a superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15 (Aug. 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies, television shows, and video game adaptations set in the Marvel Universe. In the stories, Spider-Man is the alias of Peter Parker, an orphan raised by his Aunt May and Uncle Ben in New York City after his parents Richard and Mary Parker died in a plane crash. Lee and Ditko had the character deal with the struggles of adolescence and financial issues, and accompanied him with many supporting characters, such as J. Jonah Jameson, Harry Osborn, Max Modell, romantic interests Gwen Stacy and Mary Jane Watson, and foes such as Doctor Octopus, the Green Goblin and Venom. His origin story has him acquiring spider-related abilities after a bite from a radioactive spider; these include clinging to surfaces, superhuman strength and agility, and detecting danger with his &quot;spider-sense.&quot; He then builds wrist-mounted &quot;web-shooter&quot; devices that shoot artificial spider-webbing of his own design.</p><p id="da85abc3-da56-43ab-bdf2-aaa5ef5798d4" class="">
+</p><ul id="c3ce8c90-bc09-465a-8aba-ce36e5e1fd22" class="toggle"><li><details open=""><summary><strong>Contents</strong></summary><div id="71fd83b8-6835-4d6f-b9a3-9a2855e643c4" class="column-list"><div id="aca99f9f-061f-467f-ab2e-423e41e77be4" style="width:31.25%" class="column"><nav id="f1f93118-ec30-45ae-afdf-639c92f4840d" class="block-color-gray_background table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#af32b1ec-c70c-43f5-9f42-c0dd02837e33">History</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2fce8196-5acd-4f36-90ea-661dd28ba021">Early years</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2e0145f-3fd2-4c2a-b29e-5a74a53b59e5">1970s</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#479238a2-410f-47ab-b98b-5e9eb9fea78e">Appearance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#673b3918-3c1e-4ff6-852a-b1c8fb131807">Spider-Man</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d9227b4d-5062-4147-a804-b0ab6019fb40"><strong>General Information</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ed7cc475-e17d-42da-ba7b-c99ce5530f3d"><strong>Characteristics</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa47872d-5729-4854-95df-fd50bc328d55"><strong>Extended Information</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#de9b8836-f50d-46ad-9415-db7e1f326293">Personality</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#43b8ab7a-4260-45ce-8d86-0667693843aa">Abilities</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0b4be5a9-088d-482c-91df-0cc0278dd254">Powers</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#088f071c-f560-40e2-8b06-ea0ce366337c">Weaknesses</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ecb3e5d-d794-4262-98f1-454ac2cde91b">Relationships</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ecc7b35c-9a10-41dc-aae8-c8061ca52405">Friends &amp; Allies</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9998346f-a760-4621-a3f5-f6e21d49fd64">Enemies</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#512171c1-7e4c-4a06-8aa4-71b302d42513">Trivia</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#94f5561f-8284-4ff7-b09e-511f19264f27">Gallery</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2d31ad4c-3d03-4e06-9d4a-d9ba1615f0d0">Sources</a></div></nav></div><div id="acbe0001-7a22-405a-9cf2-68fada38b0d8" style="width:68.75%" class="column"><p id="0d707879-4928-491e-957a-84434dd85931" class="">
+</p></div></div></details></li></ul><h2 id="af32b1ec-c70c-43f5-9f42-c0dd02837e33" class="">History</h2><hr id="81a7afee-e313-4f56-bbbd-491db8a1e923"/><h3 id="2fce8196-5acd-4f36-90ea-661dd28ba021" class="">Early years</h3><p id="2ed71d83-4133-448a-833a-3e52522c759a" class="">In Forest Hills, Queens, New York City, Midtown High School student Peter Benjamin Parker is a science-whiz orphan living with his Uncle Ben and Aunt May. As depicted in Amazing Fantasy #15 (Aug. 1962), he is bitten by a radioactive spider (erroneously classified as an insect in the panel) at a science exhibit and &quot;acquires the agility and proportionate strength of an arachnid&quot;. Along with heightened athletic abilities, Parker gains the ability to adhere to walls and ceilings. Through his native knack for science, he develops a gadget that lets him fire adhesive webbing of his own design through small, wrist-mounted barrels. Initially seeking to capitalize on his new abilities, Parker dons a costume and, as &quot;Spider-Man&quot;, becomes a novelty television star. However, &quot;He blithely ignores the chance to stop a fleeing thief, [and] his indifference ironically catches up with him when the same criminal later robs and kills his Uncle Ben.&quot; Spider-Man tracks and subdues the killer and learns, in the story&#x27;s next-to-last caption, &quot;With great power there must also come—great responsibility!&quot;</p><p id="968fb5f2-f5ba-44cc-9d7a-715ed5331c67" class="">Despite his superpowers, Parker struggles to help his widowed aunt pay the rent, is taunted by his peers—particularly football star Flash Thompson—and, as Spider-Man, engenders the editorial wrath of newspaper publisher J. Jonah Jameson. As he battles his enemies for the first time, Parker finds juggling his personal life and costumed adventures difficult. In time, Peter graduates from high school, and enrolls at Empire State University (a fictional institution evoking the real-life Columbia University and New York University), where he meets roommate and best friend Harry Osborn, and girlfriend Gwen Stacy, and Aunt May introduces him to Mary Jane Watson. As Peter deals with Harry&#x27;s drug problems, and Harry&#x27;s father is revealed to be Spider-Man&#x27;s nemesis the Green Goblin, Peter even attempts to give up his costumed identity for a while. Gwen Stacy&#x27;s father, New York City Police detective captain George Stacy is accidentally killed during a battle between Spider-Man and Doctor Octopus (issue #90, November 1970).</p><h3 id="a2e0145f-3fd2-4c2a-b29e-5a74a53b59e5" class="">1970s</h3><p id="6d84e65a-369c-49d1-b1b6-2f2cae01dafa" class="">In issue #121 (June 1973), the Green Goblin throws Gwen Stacy from a tower of either the Brooklyn Bridge (as depicted in the art) or the George Washington Bridge (as given in the text). She dies during Spider-Man&#x27;s rescue attempt; a note on the letters page of issue #125 states: &quot;It saddens us to say that the whiplash effect she underwent when Spidey&#x27;s webbing stopped her so suddenly was, in fact, what killed her.&quot; The following issue, the Goblin appears to kill himself accidentally in the ensuing battle with Spider-Man.</p><p id="d449fc8b-6007-4542-9134-abad84b69991" class="">Working through his grief, Parker eventually develops tentative feelings toward Watson, and the two &quot;become confidants rather than lovers&quot;. A romantic relationship eventually develops, with Parker proposing to her in issue #182 (July 1978), and being turned down an issue later. Parker went on to graduate from college in issue #185, and becomes involved with the shy Debra Whitman and the extroverted, flirtatious costumed thief Felicia Hardy, a.k.a. the Black Cat, whom he meets in issue #194 (July 1979).</p><h2 id="479238a2-410f-47ab-b98b-5e9eb9fea78e" class="">Appearance</h2><hr id="18ca2d51-6c73-4ba6-98ad-56de6bd1b875"/><p id="c1969924-a87f-42b6-bb26-52155b53939c" class="">Spider-Man is generally seen in his blue and red tights with a black spider in the middle of the front, and a large red spider in the middle of his back. His eyes have seen many iterations, but they are generally large and white and seem to change with Peter Parker&#x27;s mood and expression, although there is little to no scientific or physical explanation of how his mask can actively reflect such things. Spider-Man has also had a number of other suits he has used, the most popular of which is probably the black symbiote suit that he eventually discarded due to its negative effects on his life and personality. The symbiote, an alien creature that bonded to Parker without his knowledge or consent, would eventually join with Parker&#x27;s rival Eddie Brock to become the popular villain Venom.</p><p id="2bf73253-5b40-4d15-b50b-cd51e2bbe5c2" class="">Peter Parker, in his high school years, is typically seen as a nerd who dresses the part, including glasses, belly button high pants, loafers and a comb-over. Once graduating from high school, Parker would stop wearing glasses and generally dress in a more popular and acceptable manner, or at least a less overtly nerdy one.</p></div><div id="3e40ea42-b1de-4611-b4d4-da0d872c76ac" style="width:25%" class="column"><h3 id="673b3918-3c1e-4ff6-852a-b1c8fb131807" class="block-color-gray_background">Spider-Man</h3><figure id="6197529f-bec5-4a8c-8daf-b97ea95eb232" class="image"><a href="https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png"><img src="https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png"/></a></figure><h3 id="d9227b4d-5062-4147-a804-b0ab6019fb40" class="block-color-gray_background"><strong>General Information</strong></h3><div id="4dc5a956-ddea-4194-aee3-98f0245c52ee" class="column-list"><div id="7c0f25ae-9c6e-48cd-9f22-837031427103" style="width:43.75%" class="column"><p id="9dc02034-5531-4306-bdd1-9059dc3d1cb2" class=""><strong>Real Name
+</strong></p><p id="da6a84d0-02de-4da1-8bed-818a65835801" class=""><strong>Current Alias</strong></p><p id="ec232e64-91e1-45f5-85df-85975520b82f" class=""><strong>Marital Status</strong></p><p id="1475a558-787f-4a58-a338-a19d4e1c8c12" class=""><strong>Status</strong></p></div><div id="a4dcc1af-512c-4828-a5f7-2dea3b22ef51" style="width:56.25%" class="column"><p id="b845600e-53b7-4643-a675-98d9974dd0a3" class="">Peter Benjamin Parker</p><p id="b6542c0e-c308-4fe7-9a77-046372cdbc5a" class="">Spider-Man</p><p id="2132d86f-643f-43e3-a889-4a9398d083df" class="">Single</p><p id="f11051bd-2b96-41c3-91af-46c294f1fc7a" class="">Alive</p></div></div><h3 id="ed7cc475-e17d-42da-ba7b-c99ce5530f3d" class="block-color-gray_background"><strong>Characteristics</strong></h3><div id="be3d80e3-d9d4-497d-a9c0-d3ae693eda77" class="column-list"><div id="cd791887-f3cd-4bcb-a303-5f7c99a02980" style="width:37.5%" class="column"><p id="e5a30bf7-88ec-4632-a24e-27c2b9b05127" class=""><strong>Gender</strong></p><p id="2c87845b-61c8-42b0-97aa-0127ecebf3a6" class=""><strong>Orientation</strong></p><p id="dc8f50ac-0fe4-4ebe-8c94-b587d08db24c" class=""><strong>Age</strong></p><p id="6675403e-a958-4c5d-87c9-54ca3e27190c" class=""><strong>Height</strong></p><p id="fbe92b3d-7624-4c47-a753-4cf6ba2a1b18" class=""><strong>Weight</strong></p><p id="1df782a7-022f-40e5-809d-8966812b23c6" class=""><strong>Eyes</strong></p><p id="1fff320d-2cf9-4929-801d-f7f9a72dc3ee" class=""><strong>Hair</strong></p><p id="324391f0-7078-4be4-b837-84e8cbf97899" class=""><strong>Unusual Features</strong></p></div><div id="11bd93dd-1d69-4e5c-846e-f62bb7b35cc5" style="width:62.5%" class="column"><p id="e7467722-b70c-4014-a7c0-101ec696dc1b" class="">Male</p><p id="c8e8e93f-b3f5-4bc7-83f4-c6ee18840108" class="">Straight</p><p id="4aea4221-e8eb-456d-bd30-cf605170ffe4" class="">Approx 30s</p><p id="27d666b4-13db-4cb8-a956-3cba31e5c3b5" class="">5&#x27; 10&quot;</p><p id="665624e3-fa64-4fe0-aa90-39a8f3e4ba63" class="">167 lbs.</p><p id="70b9771d-753a-4ae9-8c6b-6fc23afacbc7" class="">Hazel</p><p id="6b1f6005-73fd-48f9-8b7f-6a6632447f75" class="">Brown</p><p id="20dd3e0c-9484-45f9-adb0-abcc54ad0517" class="">None</p></div></div><h3 id="aa47872d-5729-4854-95df-fd50bc328d55" class="block-color-gray_background"><strong>Extended Information</strong></h3><div id="0499b62e-0946-4cc3-849e-309a7184ce96" class="column-list"><div id="7579b253-9701-4bc0-a77e-9f7c963319b8" style="width:37.5%" class="column"><p id="3c35e9e8-30e3-4ec2-8fc8-a630d6d5b3d2" class=""><strong>Affiliations</strong></p><p id="18549f6d-eb57-4a6e-a948-9f1778948d73" class="">
+
+<strong>Relatives
+
+
+
+
+
+
+
+
+
+
+</strong></p><p id="76e1165a-da8e-4c16-9b27-4b943e6471f7" class=""><strong>Education
+</strong></p><p id="bdeda36c-8cc5-45ca-9c59-e1e4de3bf0f4" class=""><strong>Occupation</strong></p></div><div id="1938fba4-01ed-4ac6-bc80-1850f3cc7c50" style="width:62.5%" class="column"><p id="b3b12af9-14e6-4a2a-8b1d-1d6fafebbff4" class="">Avengers
+Daily Bugle
+Web-Warriors</p><p id="ec0db73a-3ef8-4d68-a210-850baf4ceae0" class="">Richard Parker (father, deceased)
+Mary Parker (mother, deceased)
+Benjamin Parker (uncle, deceased)
+May Parker-Jameson (aunt)
+Kaine (clone / &quot;brother&quot;)
+Ben Reilly (clone / &quot;brother&quot;)</p><p id="9a1bd879-f01a-47df-9eab-f74931924d31" class="">High school; coursing college</p><p id="46fe56e7-ab10-4ab6-84f9-02f4106268ae" class="">Adventurer, inventor, photographer, teaching assistant, vigilante</p></div></div></div></div><h2 id="de9b8836-f50d-46ad-9415-db7e1f326293" class="">Personality</h2><hr id="ab04765d-f182-4bc1-bc43-afd7c50cc8b4"/><p id="5adf05b3-40cd-4937-9e4d-4aacb7cac99c" class="">Spider-Man is commonly seen as a brave and righteous hero with an indomitable sense of justice and responsibility. Shaken by his uncle&#x27;s tragic death, Spider-Man&#x27;s vow of responsibility has led him to a path of heroism and humanitarian service. There are times when Spider-Man&#x27;s sense of responsibility can be almost overbearing; this was evidently noted by Luke Cage when he felt embarrassed about Electro causing the Raft breakout, despite the fact he had nothing to do with it. This combined with his strong moral compass in the face of adversity and sharp wit makes him one of the most iconic and enduring heroes in the Marvel Universe.</p><p id="b5bfaa5c-15c0-4bf8-979a-b230be876b60" class="">One of Spider-Man&#x27;s most prominent traits is his sense of humor. He at times is seen as the class clown in every group he is in. Even in the face of certain death, Spider-Man invariably cracks a joke, to the annoyance of both friends and foes. His reasons for this vary: either he wants to relieve the stress of a situation, or simply because he wants to hide how scared he really is during a crisis. Also, he does this to get on the nerves of his opponents, since he knows that if they are angry, that they would normally lose themselves and be vulnerable to a superior skilled opponent. It is generally agreed, however, that whenever a life is in danger, he will stop telling jokes and take the current situation with the utmost seriousness.</p><p id="a711c21f-2dcc-4a7a-b951-ba5ae5ea5de9" class="">Behind this humorous facade, however, is a wounded soul that has gone through much suffering. While Spider-Man is in combat, occasionally another person dies, leaving him depressed for having failed in his responsibility. Guilt over the loss of his Uncle Ben continues to be the primary motivating factor in his super-heroics and his life in general. Peter is quick to assume guilt and responsibility for anything bad that happens in his presence or that can, in some way, relate back to him. For instance, he assumed responsibility for Electro&#x27;s mass breakout at the Raft and Norman Osborn&#x27;s Initiative because they were &quot;his&quot; villains.</p><h2 id="43b8ab7a-4260-45ce-8d86-0667693843aa" class="">Abilities</h2><hr id="b938f04f-fe1f-4627-8c5f-21855adcac4e"/><p id="62bf71eb-0c66-4554-b42d-895f7944a5b8" class="">Peter Parker has superhuman abilities derived from mutations resulting from the bite of a radioactive spider. Since the original Lee-Ditko stories, Spider-Man has had the ability to cling to walls. This has been speculated to be based on a distance-dependent interaction between his body and surfaces, known as the van der Waals force, though in the 2002 Spider-Man film, his hands and feet are lined with tiny clinging cilia in the manner of a real spider&#x27;s feet. Spider-Man&#x27;s other powers include superhuman strength, speed, agility and balance, a precognitive sixth sense referred to as his &quot;Spider-Sense,&quot; which alerts him to danger. In the aftermath of the 1989 &quot;Acts of Vengeance&quot; storyline, Spider-Man was said to have &quot;superhuman recuperative abilities&quot; that sped up his recovery from the exhaustion he suffered in defeating the Tri-Sentinel. The character was originally conceived by Stan Lee and Steve Ditko as intellectually gifted, but later writers have depicted his intellect at genius level. After years of fighting, Parker honed his skill into an equivalent of martial arts that is unique to his powers. Academically brilliant, Parker has expertise in the fields of applied science, chemistry, physics, biology, engineering, mathematics, and mechanics.</p><h3 id="0b4be5a9-088d-482c-91df-0cc0278dd254" class="">Powers</h3><ul id="09b87ece-281e-449f-98e5-be55ca01b8f5" class="bulleted-list"><li><strong>Spider Physiology:</strong> Spider-Man possesses the proportionate powers of a spider, granted to him from an irradiated Common House Spider (Achaearanea tepidariorum) which bit Peter Parker that was apparently already mutated from prior exposure to certain frequencies of radiation and received a final, lethal dose during Parker&#x27;s attendance of the exhibition. The radioactive, complex mutagenic enzymes in the spider&#x27;s blood that were transferred at the time of the bite triggered numerous body-wide mutagenic changes within Parker, granting him superhuman strength, speed, toughened flesh, and numerous arachnid-like abilities. That mutation granted him an &quot;enhanced chromosome pattern.&quot;</li></ul><ul id="165668d3-e293-4e09-af33-0eb89627703b" class="bulleted-list"><li><strong>Spider-Sense: </strong>Spider-Man possesses a precognitive danger or &quot;spider&quot; sense which warns him of potential or immediate danger by the manifestation of a tingling sensation in the back of his skull, and links with his superhuman kinesthetics, enabling him to evade most any injuries unless he cognitively overrides his automatic reflexes.</li></ul><h3 id="088f071c-f560-40e2-8b06-ea0ce366337c" class="">Weaknesses</h3><ul id="8574055a-33b3-4fe4-846d-80e99a3e00f1" class="bulleted-list"><li><strong>Spider-Sense Disruption:</strong> Spider-Man&#x27;s Spider-Sense can lose its effectiveness if it is blocked or temporarily weakened by specialized equipment or certain drugs. It also would not trigger if it detects something that is not registered as a threat like the Spider-Man clones or the Venom symbiote, its offspring, Anti-Venom, or the Skrulls. When deprived of his spider-sense, Spider-Man becomes vulnerable to surveillance and attack, and web-slinging requires most of his concentration.</li></ul><ul id="700e9513-4fd1-4472-a5d6-d6d80c6f5027" class="bulleted-list"><li><strong>Bad Luck:</strong> Not exactly a flaw or a disadvantage in his crime-fighting, Peter Parker&#x27;s life is generally a complicated one. Peter has been forced on numerous occasions to lie to people close to him, be late in his commitments, get away from people, and so on for the sake of his secret identity. This inherent difficulty to get his superhero life secrecy, matched with the number of superhuman events and beings in New York and simply coincidence has, in turn, lead Peter to aggravate people around himself, even ones close to himself, and to, more often than not, run into trouble and embarrassment. Peter often remarks whenever he misses an opportunity to better his social life, improve his finances, or even get to work on time, (due to his super-heroics), &quot;Typical Parker Luck.&quot;</li></ul><h2 id="2ecb3e5d-d794-4262-98f1-454ac2cde91b" class="">Relationships</h2><hr id="fdfb9cee-b5f0-4a77-b15d-cca9a0fddc5e"/><h3 id="ecc7b35c-9a10-41dc-aae8-c8061ca52405" class="">Friends &amp; Allies</h3><ul id="8b811231-6ef5-4ecd-afd2-c12b48dc0868" class="bulleted-list"><li><strong>Aunt May:</strong> After his parents died, Peter Parker was raised by his loving aunt, May Parker, and his uncle and father figure, Ben Parker. After Uncle Ben is murdered by a burglar, Aunt May is virtually Peter&#x27;s only family, and she and Peter are very close.</li></ul><ul id="fae9470e-2f3d-4d96-b798-c4199591b908" class="bulleted-list"><li><strong>J. Jonah Jameson: </strong>the publisher of the Daily Bugle and Peter Parker&#x27;s boss. A harsh critic of Spider-Man, he constantly features negative articles about the superhero in his newspaper. Despite his role as Jameson&#x27;s editor and confidant, Robbie Robertson is always depicted as a supporter of both Peter Parker and Spider-Man.</li></ul><ul id="3981d79e-69bf-4568-95e8-81ce5110ebe3" class="bulleted-list"><li><strong>Eugene &quot;Flash&quot; Thompson: </strong>commonly depicted as Parker&#x27;s high school tormentor and bully, but in later comic issues he becomes a friend to Peter and adopts his own superhero identity, Agent Venom, after merging with the Venom symbiote. Meanwhile, Harry Osborn, son of Norman Osborn, is most commonly recognized as Peter&#x27;s best friend, some versions depicted him as his rival.</li></ul><h3 id="9998346f-a760-4621-a3f5-f6e21d49fd64" class="">Enemies</h3><ul id="81c94cf0-d6fd-4053-b443-c3b30fb0a783" class="bulleted-list"><li><strong>Norman Osborn:</strong> aka the Green Goblin. Peter and Norman have gone back to back for years, and their fights have left Peter with physical and mental scars. Notably killed Gwen Stacy.</li></ul><h2 id="512171c1-7e4c-4a06-8aa4-71b302d42513" class="">Trivia</h2><hr id="3fecaee9-440a-410b-b892-8d3dbdf470c8"/><ul id="1551b474-4f07-41d2-8b9d-6ba45abf9093" class="bulleted-list"><li>Peter is a lifelong fan of the New York Mets.</li></ul><ul id="fac349a9-ed62-4de4-b8a1-3c2bdcc139fa" class="bulleted-list"><li>Peter is a Libra, making his birthday sometime between September 23 and October 22. In 2012, this was confirmed as October 14th.</li></ul><ul id="00228f75-f822-4caf-b692-b148a09ef205" class="bulleted-list"><li>Spider-Man considers Five Guys to have the best hamburgers in New York.</li></ul><ul id="b427049b-a2b2-4595-a0de-5901bb14c7c7" class="bulleted-list"><li>Peter&#x27;s locker combination in middle school was 06-18-28.</li></ul><ul id="415740db-6a8b-49a0-9b18-2f9e679c9a08" class="bulleted-list"><li>Peter&#x27;s favorite breakfast is wheat cakes.</li></ul><h2 id="94f5561f-8284-4ff7-b09e-511f19264f27" class="">Gallery</h2><hr id="66190efa-552f-4b03-9faa-0768662c4bf5"/><div id="79d12937-b3b5-47e8-9a07-2cc908423ffc" class="column-list"><div id="2a5e26d7-bf5f-4523-8a20-5398be8623a2" style="width:37.5%" class="column"><figure id="faba77b4-be08-4c19-b51d-6905cc0f2662" class="image"><a href="https://upload.wikimedia.org/wikipedia/en/b/b3/Spider-Man_characters.jpeg"><img style="width:336px" src="https://upload.wikimedia.org/wikipedia/en/b/b3/Spider-Man_characters.jpeg"/></a></figure></div><div id="475a97f5-bfd6-4271-9aa0-dba999954528" style="width:29.166666666666675%" class="column"><figure id="a15d1329-8a92-49a5-adb5-0f2be2f1fa36" class="image"><a href="https://upload.wikimedia.org/wikipedia/en/3/35/Amazing_Fantasy_15.jpg"><img style="width:288px" src="https://upload.wikimedia.org/wikipedia/en/3/35/Amazing_Fantasy_15.jpg"/></a></figure></div><div id="65383872-362a-4b8e-b7b3-1ebffd63beee" style="width:33.33333333333333%" class="column"><figure id="b11d42ea-b51b-4429-9847-9f3c197a04a0" class="image"><a href="https://static.wikia.nocookie.net/marveldatabase/images/9/96/Friendly_Neighborhood_Spider-Man_Vol_2_8_Granov_Variant_Textless.jpg/revision/latest?cb=20190608001208"><img style="width:288px" src="https://static.wikia.nocookie.net/marveldatabase/images/9/96/Friendly_Neighborhood_Spider-Man_Vol_2_8_Granov_Variant_Textless.jpg/revision/latest?cb=20190608001208"/></a></figure></div></div><h3 id="2d31ad4c-3d03-4e06-9d4a-d9ba1615f0d0" class="">Sources</h3><hr id="7a1b9676-a2d1-429a-8713-f57d03218d1d"/><p id="99734795-252e-48d8-8620-06113668d7ce" class="">Every bit of text comes from one of the following sites. Text was used for sample purposes only.</p><figure id="797e1d46-4a2d-4efa-83e8-b499bcdb923f"><a href="https://en.wikipedia.org/wiki/Spider-Man#Powers,_skills,_and_equipment" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spider-Man - Wikipedia</div><div class="bookmark-description">Peter Parker Spider-Man Publisher Marvel Comics First appearance Amazing Fantasy #15 (Aug.</div></div><div class="bookmark-href"><img src="https://en.wikipedia.org/static/favicon/wikipedia.ico" class="icon bookmark-icon"/>https://en.wikipedia.org/wiki/Spider-Man#Powers,_skills,_and_equipment</div></div><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Web_of_Spider-Man_Vol_1_129-1.png/250px-Web_of_Spider-Man_Vol_1_129-1.png" class="bookmark-image"/></a></figure><figure id="6eea892b-80fc-48c2-afef-43e9009bd4b1"><a href="https://marvel.fandom.com/wiki/Peter_Parker_(Earth-616)#Personality" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Peter Parker (Earth-616)</div><div class="bookmark-description">Peter Benjamin Parker1 lost his parents, Richard and Mary Parker, at a young age.101 Orphaned as a toddler, he had to live with his Uncle Ben and Aunt May. During a science exhibition, he was bitten by a Radioactive Spider, granting him his powers.</div></div><div class="bookmark-href"><img src="https://static.wikia.nocookie.net/marveldatabase/images/4/4a/Site-favicon.ico/revision/latest?cb=20210614031532" class="icon bookmark-icon"/>https://marvel.fandom.com/wiki/Peter_Parker_(Earth-616)#Personality</div></div><img src="https://static.wikia.nocookie.net/marveldatabase/images/9/96/Friendly_Neighborhood_Spider-Man_Vol_2_8_Granov_Variant_Textless.jpg/revision/latest?cb=20190608001208" class="bookmark-image"/></a></figure><figure id="b90459d1-24af-4b24-a2a1-5a1b5d69573a"><a href="https://www.giantbomb.com/spider-man/3005-69/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spider-Man (Character) - Giant Bomb</div><div class="bookmark-description">After being bitten by a radioactive spider during a science exhibit unrelated to school, timid teenager Peter Parker becomes the Amazing Spider-Man. Armed with the ability to climb walls and enhanced strength, Spider-Man uses his powers to fight evil and protect the innocent.</div></div><div class="bookmark-href"><img src="https://www.giantbomb.com/favicon.ico" class="icon bookmark-icon"/>https://www.giantbomb.com/spider-man/3005-69/</div></div><img src="https://www.giantbomb.com/a/uploads/scale_medium/0/7772/3028605-nibellion_2018-jun-12%201.jpg" class="bookmark-image"/></a></figure></div></article></body></html>
